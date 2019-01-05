@@ -21,6 +21,7 @@ namespace NonPocoChangeTracking.ChangeTracking
         private readonly ProxyGenerator _proxy = new ProxyGenerator();
         private readonly Type _genericInterceptorPolicyType = typeof(InterceptorPolicy<>);
         private readonly Type _genericInterceptorType = typeof(ChangeTrackingFuncInterceptor<>);
+        private readonly Type _changeTrackableType = typeof(IChangeTrackable);
         #endregion
 
         #region Base Class Overrides
@@ -34,7 +35,9 @@ namespace NonPocoChangeTracking.ChangeTracking
                     return;
 
                 registry.AddType(pluginType, type);
-                registry.Policies.Interceptors(CreatePolicy(pluginType));
+
+                if(_changeTrackableType.IsAssignableFrom(pluginType))
+                    registry.Policies.Interceptors(CreatePolicy(pluginType));
 
                 ConfigureFamily(registry.For(pluginType));
             });
