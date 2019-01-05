@@ -8,9 +8,10 @@ using System;
 using System.Linq;
 using IInterceptor = StructureMap.Building.Interception.IInterceptor;
 
-
-//https://github.com/structuremap/structuremap/blob/a6bf0af54e1b29a8944dded56303ce29f391ae23/src/StructureMap/Graph/DefaultConventionScanner.cs
-//https://stackoverflow.com/questions/26163721/structuremap-interception-for-registry-scanned-types
+/*
+ * This class is based on the DefaultConventionScanner that is part of the StructureMap code base:
+ * https://github.com/structuremap/structuremap/blob/a6bf0af54e1b29a8944dded56303ce29f391ae23/src/StructureMap/Graph/DefaultConventionScanner.cs
+ */
 
 namespace NonPocoChangeTracking.ChangeTracking
 {
